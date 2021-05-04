@@ -22,7 +22,7 @@
 
         <div class="container-fluid navbar-text-resizer">
 
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href=" {% url 'home-page' %} ">
                 <img src="../../static/core/logo.svg" alt="" height="46">
             </a>
 
@@ -35,7 +35,7 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="{% url 'home-page' %}">Home</a>
                     </li>
                     {% comment %} <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
@@ -53,19 +53,23 @@
 
                     {% if ass.provider == 'facebook' %}
                     <span class="navbar-text" style="margin-top: 5px; color: black;">
-                        {{ ass.extra_data.name}}
+                        {{ ass.extra_data.name }}
                     </span>
                     {% elif ass.provider == 'vk-oauth2' %}
                     <span class="navbar-text" style="margin-top: 5px; color: black;">
-                        {{ ass.extra_data.first_name}} {{ ass.extra_data.last_name}}
+                        {{ ass.extra_data.first_name }} {{ ass.extra_data.last_name }}
                     </span>
                     {% endif %}
+
+                    {% endfor %}
 
 
                     <li class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                             id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                            {% for ass in backends.associated %}
 
                             {% if ass.provider == 'facebook' %}
                             <img src="{{ ass.extra_data.picture.data.url }}" class="rounded-circle" alt="" height="46">
@@ -74,6 +78,7 @@
                             {% endif %}
                             {% empty %}
                             <img src="../../static/core/avatar-placeholder.png" class="rounded-circle" alt="" height="46">
+                            {% endfor %}
 
                         </a>
 
@@ -84,8 +89,6 @@
                         </ul>
 
                     </li>
-
-                    {% endfor %}
                 </ul>
 
                 {% else %}

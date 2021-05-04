@@ -1,0 +1,39 @@
+{% extends "core/base.html" %}
+
+{% block page %}
+
+{% block map %}
+<div class="add-memories">
+    <div class="map">
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box" size="60px" />
+        <div id="map_canvas" style="width:600px;height:600px;"></div>
+    </div>
+
+    <form class="form">
+        <div class="mb-3">
+            <label for="locationName" class="form-label">Location name</label>
+            <input type="text" class="form-control" id="locationName" placeholder="Location Name">
+        </div>
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" placeholder="Address">
+        </div>
+
+        <div class="mb-3">
+            <label for="memories" class="form-label">Memories</label>
+            <textarea class="form-control" id="memories" rows="3" placeholder="Memories"></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-dark btn-rounded navbar-text-resizer" href="#"
+            style="padding-top: 3px;">Submit</button>
+    </form>
+
+</div>
+<script type="text/javascript" src=" {{ "../../static/core/js/mapScript.js" }} "></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAroCtBLvczTMx1OXaK1Bk5v27UWaeTnFU&callback=initialize&libraries=places&v=weekly">
+</script>
+
+{% endblock %}
+
+{% endblock %}

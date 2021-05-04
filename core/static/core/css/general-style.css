@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap');
 
+.map {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin-right: auto;
+    margin-left: 36px;
+    margin-top: 150px;
+}
+
+.add-memories {
+    display: flex;
+    flex-direction: row;
+    margin-left: 18%;
+}
+
 .navbar-text-resizer {
     font-size: 22px;
 }
@@ -20,11 +41,23 @@
 
 #footer {
     width: 100%;
-    position: absolute;
+    position: inherit;
     bottom: 0;
     left: 0;
 }
 
 .text-white {
     color: black!important;
+}
+
+.empty-memories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+    flex-direction: column;
+}
+
+html, body {
+    height: 100%;
 }
