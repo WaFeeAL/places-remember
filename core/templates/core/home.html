@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+
+{% block page %}
+
+{% block cards %}
+<h1>Hello!</h1>
+{% comment %} <ul class='menu'>
+    {#    <li class="menu_item"><a class="menu_link" href="{% url 'add-page' %}">Add new</a></li>#}
+{#    <li class="menu_item"><a class="menu_link" href="{% url 'show-page' %}">Show all</a></li>#}
+    {#    <li class="menu_item"><a class="menu_link" href="{% url 'edit-page' %}">Edit</a></li>#}
+    {#    <li class="menu_item"><a class="menu_link" href="{% url 'delete-page' %}">Delete</a></li>#}
+    {#    <li class="menu_item"><a class="menu_link" href="{% url 'find-page' %}">Find new bicycle</a></li>#}
+</ul> {% endcomment %}
+{% endblock %}
+
+{% comment %} {% block map %}
+<div class="map">
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
+    <div id="map_canvas" style="width:600px;height:400px;"></div>
+</div>
+<script type="text/javascript" src=" {{ "../../static/general_site/js/mapScript.js" }} "></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAroCtBLvczTMx1OXaK1Bk5v27UWaeTnFU&callback=initialize&libraries=places&v=weekly">
+</script>
+{% endblock %} {% endcomment %}
+
+{% endblock %}
