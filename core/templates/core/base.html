@@ -49,36 +49,57 @@
 
                 <ul class="navbar-nav">
 
+                    {% for ass in backends.associated %}
+
+                    {% if ass.provider == 'facebook' %}
+                    <span class="navbar-text" style="margin-top: 5px; color: black;">
+                        {{ ass.extra_data.name}}
+                    </span>
+                    {% elif ass.provider == 'vk-oauth2' %}
+                    <span class="navbar-text" style="margin-top: 5px; color: black;">
+                        {{ ass.extra_data.first_name}} {{ ass.extra_data.last_name}}
+                    </span>
+                    {% endif %}
+
+
                     <li class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
                             id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../../static/core/avatar-placeholder.png" class="rounded-circle" alt=""
-                                height="46">
+
+                            {% if ass.provider == 'facebook' %}
+                            <img src="{{ ass.extra_data.picture.data.url }}" class="rounded-circle" alt="" height="46">
+                            {% elif ass.provider == 'vk-oauth2' %}
+                            <img src="{{ ass.extra_data.photo_max_orig }}" class="rounded-circle" alt="" height="46">
+                            {% endif %}
+                            {% empty %}
+                            <img src="../../static/core/avatar-placeholder.png" class="rounded-circle" alt="" height="46">
+
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             {% comment %} <li><a class="dropdown-item" href="#">Action</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li> {% endcomment %}
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                         </ul>
 
                     </li>
 
+                    {% endfor %}
                 </ul>
 
                 {% else %}
 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <a type="button" class="btn btn-outline-dark d-flex btn-rounded navbar-text-resizer me-3"
-                        href="{% url 'social:begin' 'facebook' %}" style="padding-top: 3px;">Login with VK</a>
+                        href="{% url 'social:begin' 'facebook' %}" style="padding-top: 3px;">Login with FB</a>
                     <a type="button" class="btn btn-outline-dark d-flex btn-rounded navbar-text-resizer"
-                        href="{% url 'social:begin' 'vk-oauth2' %}" style="padding-top: 3px;">Login with FB</a>
+                        href="{% url 'social:begin' 'vk-oauth2' %}" style="padding-top: 3px;">Login with VK</a>
                 </div>
 
                 {% endif %}
             </div>
-
+        </div>
     </nav>
 
     {% endblock %}
