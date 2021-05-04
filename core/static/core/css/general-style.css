@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap');
+
+.navbar-text-resizer {
+    font-size: 22px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+
+.btn-rounded {
+    border: 2px solid;
+    border-radius: 24px;
+}
+
+.btn-icon-rounded {
+    border: 0;
+    border-radius: 20px;
+}
+
+#footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.text-white {
+    color: black!important;
+}
