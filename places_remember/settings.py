@@ -22,6 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-9ou044=vk^2j9c8vx@)x#wc9_a7*^u)5kz=mqe3te9s&=(bg3w'
 
+SOCIAL_AUTH_FACEBOOK_KEY = '944297983009677'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'fed5165ba0201846e0dbfe2f18466542'
+SOCIAL_AUTH_VK_OAUTH2_KEY = '7844569'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'Y3sxqEsY5ANzjRxNIvdU'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -63,9 +68,39 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
+]
+
+LOGIN_URL = '/home'
+LOGIN_REDIRECT_URL = '/home'
+LOGOUT_URL = '/logout'
+LOGOUT_REDIRECT_URL = '/home'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.vk.VKOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'fields': 'id, name, email, picture.type(large), link'
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
+
+SOCIAL_AUTH_VK_APP_USER_MODE = 2
+SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
+SOCIAL_AUTH_VK_OAUTH2_EXTRA_DATA = [
+    'id', 'email', 'photo_max_orig', 'first_name', 'last_name'
 ]
 
 WSGI_APPLICATION = 'places_remember.wsgi.application'
@@ -76,8 +111,12 @@ WSGI_APPLICATION = 'places_remember.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'places-remember',
+        'USER': 'postgres',
+        'PASSWORD': '401121',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -104,7 +143,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
