@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap');
 
+.memories {
+    flex-grow: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    grid-gap: 15px;
+}
+
 .map {
     display: flex;
     justify-content: center;
@@ -19,6 +29,7 @@
     display: flex;
     flex-direction: row;
     margin-left: 18%;
+    height: 75%;
 }
 
 .navbar-text-resizer {
@@ -44,6 +55,7 @@
     position: inherit;
     bottom: 0;
     left: 0;
+    margin-top: 30px;
 }
 
 .text-white {
@@ -51,10 +63,19 @@
 }
 
 .empty-memories {
+    grid-column: 2;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75%;
+    margin-top: 17%;
+    flex-direction: column;
+}
+
+.add-memories-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
     flex-direction: column;
 }
 

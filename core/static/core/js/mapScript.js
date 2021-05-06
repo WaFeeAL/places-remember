@@ -73,8 +73,8 @@ function initialize() {
   });
 }
 
-const formElement = document.querySelector("form");
-formElement.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log(locationName.value, address.value, description.value);
-});
+// const formElement = document.querySelector("form");
+// formElement.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   console.log(locationName.value, address.value, memories.value);
+// });
