@@ -3,10 +3,11 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.home, name="home-page"),
-    path('home', views.home, name="home-page"),
-    path('add-memory', views.add_memory, name="add-memory"),
+    path('', views.home_page, name="home-page"),
+    path('home', views.home_page, name="home-page"),
+    path('add-memory', views.add_memory_page, name="add-memory-page"),
     # path("login", views.home, name="login"),
     path("logout", views.logout_view, name="logout"),
     path('social-auth', include('social_django.urls', namespace="social")),
+    path('memory', include('memories.urls')),
 ]

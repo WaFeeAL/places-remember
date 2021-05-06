@@ -9,23 +9,24 @@
         <div id="map_canvas" style="width:600px;height:600px;"></div>
     </div>
 
-    <form class="form">
+    <form class="form" method="post" action="{% url 'memory-list' %}">
+    {% csrf_token %}
+        <input type="hidden" name="user_id" value=" {{ user.id }} ">
         <div class="mb-3">
             <label for="locationName" class="form-label">Location name</label>
-            <input type="text" class="form-control" id="locationName" placeholder="Location Name">
+            <input type="text" class="form-control" id="locationName" placeholder="Location Name" name="location_name">
         </div>
 
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address" placeholder="Address">
+            <input type="text" class="form-control" id="address" placeholder="Address" name="location_address">
         </div>
 
         <div class="mb-3">
             <label for="memories" class="form-label">Memories</label>
-            <textarea class="form-control" id="memories" rows="3" placeholder="Memories"></textarea>
+            <textarea class="form-control" id="memories" rows="3" placeholder="Memories" name="location_memories"></textarea>
         </div>
-        <button type="submit" class="btn btn-outline-dark btn-rounded navbar-text-resizer" href="#"
-            style="padding-top: 3px;">Submit</button>
+        <input type="submit" class="btn btn-outline-dark btn-rounded navbar-text-resizer" style="padding-top: 3px;">
     </form>
 
 </div>

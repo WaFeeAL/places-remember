@@ -44,8 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sslserver',
     'social_django',
+    'rest_framework',
 
-    'core'
+    'core',
+    'memories'
 ]
 
 MIDDLEWARE = [

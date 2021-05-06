@@ -3,30 +3,47 @@
 {% block page %}
 
 {% block memories %}
-<div class="empty-memories">
-    <p>У вас нет ни одного воспоминания</p>
-    {% if user.is_authenticated %}
-    <a type="button" class="btn btn-outline-dark btn-rounded navbar-text-resizer me-3"
-                        href="{% url 'add-memory' %}" style="padding-top: 3px;">Add Remember</a>
-    {% endif %}
+<div class="memories">
+    {% for memory in memories %}
+    <div class="card text-center">
+        <div class="card-header">
+            Воспоминание №{{ memory.id }}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"> {{ memory.location_name }} </h5>
+            <p class="card-text">{{ memory.location_address }}</p>
+            <p class="card-text">{{ memory.location_memories }}</p>
+            <a href="{% url 'delete-memory' memory.id%}" class="btn btn-primary">Удалить</a>
+        </div>
+    </div>
+
+    {% comment %} <div class="empty-memories">
+        <p>У вас нет ни одного воспоминания</p>
+        {% if user.is_authenticated %}
+        <a type="button" class="btn btn-outline-dark btn-rounded navbar-text-resizer me-3"
+            href="{% url 'add-memory-page' %}" style="padding-top: 3px;">Add Remember</a>
+        {% endif %}
+    </div> {% endcomment %}
+    {% comment %} <ul class='menu'>
+        {#    <li class="menu_item"><a class="menu_link" href="{% url 'add-page' %}">Add new</a></li>#}
+        {#    <li class="menu_item"><a class="menu_link" href="{% url 'show-page' %}">Show all</a></li>#}
+        {#    <li class="menu_item"><a class="menu_link" href="{% url 'edit-page' %}">Edit</a></li>#}
+        {#    <li class="menu_item"><a class="menu_link" href="{% url 'delete-page' %}">Delete</a></li>#}
+        {#    <li class="menu_item"><a class="menu_link" href="{% url 'find-page' %}">Find new bicycle</a></li>#}
+    </ul> {% endcomment %}
+    {% empty %}
+    <div class="empty-memories">
+        <p>У вас нет ни одного воспоминания</p>
+    </div>
+    {% endfor %}
 </div>
-{% comment %} <ul class='menu'>
-    {#    <li class="menu_item"><a class="menu_link" href="{% url 'add-page' %}">Add new</a></li>#}
-{#    <li class="menu_item"><a class="menu_link" href="{% url 'show-page' %}">Show all</a></li>#}
-    {#    <li class="menu_item"><a class="menu_link" href="{% url 'edit-page' %}">Edit</a></li>#}
-    {#    <li class="menu_item"><a class="menu_link" href="{% url 'delete-page' %}">Delete</a></li>#}
-    {#    <li class="menu_item"><a class="menu_link" href="{% url 'find-page' %}">Find new bicycle</a></li>#}
-</ul> {% endcomment %}
 {% endblock %}
 
-{% comment %} {% block map %}
-<div class="map">
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
-    <div id="map_canvas" style="width:600px;height:400px;"></div>
+{% if user.is_authenticated %}
+<div class="add-memories-btn">
+    <a type="button" class="btn btn-outline-dark btn-rounded navbar-text-resizer me-3"
+        href="{% url 'add-memory-page' %}" style="padding-top: 3px;">Add Memory</a>
 </div>
-<script type="text/javascript" src=" {{ "../../static/general_site/js/mapScript.js" }} "></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAroCtBLvczTMx1OXaK1Bk5v27UWaeTnFU&callback=initialize&libraries=places&v=weekly">
-</script>
-{% endblock %} {% endcomment %}
+{% endif %}
 
 {% endblock %}
