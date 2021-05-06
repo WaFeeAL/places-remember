@@ -13,7 +13,7 @@
             <h5 class="card-title"> {{ memory.location_name }} </h5>
             <p class="card-text">{{ memory.location_address }}</p>
             <p class="card-text">{{ memory.location_memories }}</p>
-            <a href="{% url 'delete-memory' memory.id%}" class="btn btn-primary">Удалить</a>
+            <a href="{% url 'delete-memory' memory.id%}" class="btn btn-outline-dark btn-rounded navbar-text-resizer">Delete</a>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
     </ul> {% endcomment %}
     {% empty %}
     <div class="empty-memories">
-        <p>У вас нет ни одного воспоминания</p>
+        <p>You don't have a single memory</p>
     </div>
     {% endfor %}
 </div>
@@ -41,7 +41,7 @@
 
 {% if user.is_authenticated %}
 <div class="add-memories-btn">
-    <a type="button" class="btn btn-outline-dark btn-rounded navbar-text-resizer me-3"
+    <a type="button" class="btn btn-outline-dark btn-rounded navbar-text-resizer"
         href="{% url 'add-memory-page' %}" style="padding-top: 3px;">Add Memory</a>
 </div>
 {% endif %}
