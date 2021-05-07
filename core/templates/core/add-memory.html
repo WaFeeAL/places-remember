@@ -9,7 +9,7 @@
         <div id="map_canvas" style="width:600px;height:600px;"></div>
     </div>
 
-    <form class="form" method="post" action="{% url 'memory-list' %}">
+    <form class="form" method="post" action="{% url 'post-memory' %}">
     {% csrf_token %}
         <input type="hidden" name="user_id" value=" {{ user.id }} ">
         <div class="mb-3">
