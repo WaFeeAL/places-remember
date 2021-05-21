@@ -1,0 +1,34 @@
+{% extends "memories/base.html" %}
+
+{% block page %}
+
+{% block memories %}
+<div class="memories">
+    {% for memory in memories %}
+    <div class="card text-center">
+        <div class="card-header">
+            Воспоминание
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"> {{ memory.location_name }} </h5>
+            <p class="card-text">{{ memory.location_address }}</p>
+            <p class="card-text">{{ memory.location_memories }}</p>
+            <a href="{% url 'delete-memory' memory.id%}" class="btn btn-outline-dark btn-rounded navbar-text-resizer">Delete</a>
+        </div>
+    </div>
+    {% empty %}
+    <div class="empty-memories">
+        <p>You don't have a single memory</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% if user.is_authenticated %}
+<div class="add-memories-btn">
+    <a type="button" class="btn btn-outline-dark btn-rounded navbar-text-resizer"
+        href="{% url 'add-memory-page' %}" style="padding-top: 3px;">Add Memory</a>
+</div>
+{% endif %}
+
+{% endblock %}

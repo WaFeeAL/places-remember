@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sslserver',
     'social_django',
-
-    'core',
     'memories'
 ]
 
@@ -174,7 +172,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'core/static'),
+    os.path.join(PROJECT_ROOT, 'memories/static'),
 )
 
 # Default primary key field type

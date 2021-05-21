@@ -1,4 +1,4 @@
-{% extends "core/base.html" %}
+{% extends "memories/base.html" %}
 
 {% block page %}
 
@@ -11,7 +11,7 @@
 
     <form class="form" method="post" action="{% url 'post-memory' %}">
     {% csrf_token %}
-        <input type="hidden" name="user_id" value=" {{ user.id }} ">
+        <input type="hidden" name="user" value=" {{ user.id }} ">
         <div class="mb-3">
             <label for="locationName" class="form-label">Location name</label>
             <input type="text" class="form-control" id="locationName" placeholder="Location Name" name="location_name">
@@ -30,7 +30,7 @@
     </form>
 
 </div>
-<script type="text/javascript" src=" {{ "../../static/core/js/mapScript.js" }} "></script>
+<script type="text/javascript" src=" {{ "../../static/memories/js/mapScript.js" }} "></script>
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAroCtBLvczTMx1OXaK1Bk5v27UWaeTnFU&callback=initialize&libraries=places&v=weekly">
 </script>

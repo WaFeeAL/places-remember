@@ -12,7 +12,7 @@
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
     </script>
 
-    <link href="{{ "../../static/core/css/general-style.css" }}" rel="stylesheet" type="text/css" />
+    <link href="{{ "../../static/memories/css/general-style.css" }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -25,7 +25,7 @@
             <div class="container-fluid navbar-text-resizer">
 
                 <a class="navbar-brand" href=" {% url 'home-page' %} ">
-                    <img src="../../static/core/logo.svg" alt="" height="46">
+                    <img src="../../static/memories/logo.svg" alt="" height="46">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -39,12 +39,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'home-page' %}">Home</a>
                         </li>
-                        {% comment %} <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li> {% endcomment %}
                     </ul>
 
                     {% if user.is_authenticated %}
@@ -82,15 +76,13 @@
                                     height="46">
                                 {% endif %}
                                 {% empty %}
-                                <img src="../../static/core/avatar-placeholder.png" class="rounded-circle" alt=""
+                                <img src="../../static/memories/avatar-placeholder.png" class="rounded-circle" alt=""
                                     height="46">
                                 {% endfor %}
 
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="min-width: 0;">
-                                {% comment %} <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li> {% endcomment %}
                                 <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                             </ul>
 

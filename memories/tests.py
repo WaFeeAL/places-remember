@@ -1,9 +1,7 @@
 from django.test import TestCase, RequestFactory
 from django.contrib.auth import get_user_model
 
-from .models import MemoryModel
-from .serializers import MemorySerializer
-from .views import get_memory_list, post_memory
+from .views import home_page, post_memory
 
 User = get_user_model()
 
@@ -18,7 +16,7 @@ class MemoryModelTestCases(TestCase):
         request = factory.get('')
         request.user = self.user
         request.method = 'POST'
-        request.POST = {'user_id': 444,
+        request.POST = {'user': self.user,
                         'location_name': 'Красноярск',
                         'location_address': 'Красноярск',
                         'location_memories': 'Красноярск'}
@@ -32,8 +30,5 @@ class MemoryModelTestCases(TestCase):
         request.user = self.user
         request.method = 'GET'
 
-        friends = MemoryModel.objects.filter(user_id=request.user.id).all()
-        serializer = MemorySerializer(friends, many=True)
-
-        response = get_memory_list(request)
-        self.assertEqual(response, serializer.data)
+        response = home_page(request)
+        self.assertEqual(response.status_code, 200)
